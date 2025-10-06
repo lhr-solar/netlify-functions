@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export async function handler(event, context) {
     try {
         // Use environment variable LINKTREE_USERNAME, default to 'lhrsolar'
