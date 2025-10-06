@@ -2,7 +2,11 @@ import fetch from "node-fetch";
 
 export async function handler(event, context) {
     try {
-        const response = await fetch("https://linktr.ee/lhrsolar");
+        // Use environment variable LINKTREE_USERNAME, default to 'lhrsolar'
+        const username = process.env.LINKTREE_USERNAME || "";
+        const targetUrl = `https://linktr.ee/${username}`;
+
+        const response = await fetch(targetUrl);
         const html = await response.text();
 
         // Extract JSON from the page
@@ -23,7 +27,7 @@ export async function handler(event, context) {
         return {
             statusCode: 200,
             headers: {
-                "Access-Control-Allow-Origin": "*", // allows your GitHub Pages frontend to fetch
+                "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(
                 links.map((l) => ({
