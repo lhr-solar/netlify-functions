@@ -1,6 +1,5 @@
 export async function handler(event, context) {
     try {
-        // Use environment variable LINKTREE_USERNAME, default to 'lhrsolar'
         const username = process.env.LINKTREE_USERNAME || "";
         const targetUrl = `https://linktr.ee/${username}`;
 
